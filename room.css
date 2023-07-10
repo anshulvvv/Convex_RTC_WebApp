@@ -19,6 +19,10 @@
     
 }
 
+.container svg {
+    padding-bottom: 5px;
+}
+
 .container-part{
     display:flex;
     flex-direction: column;
