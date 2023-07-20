@@ -8,7 +8,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <link rel='stylesheet' type='text/css' media='screen' href='./room.css'>
 </head>
-<body class="pattern">
+<body class="pattern" >
     <header style="border-bottom: solid 1px #e1e1e1; background-color:#212529;opacity: 0.8; ">
         <div class="container">
             
@@ -49,6 +49,18 @@
         </div>
        
       </header>
+      <div id="conatiner-camera-id" class="conatiner-camera"  >
+
+        <div id="videos" class="camera-area camera-off-user-1">
+        <video class="video-player" id="user-1" autoplay playsinline></video>
+        </div>
+        
+       
+                <div id="videos" class="camera-area">   
+                <video class="video-player" id="user-2" autoplay playsinline></video>
+                </div>
+    
+ </div>
       
     
   
@@ -69,7 +81,7 @@
          
 
    
-            <div class="stream__actions" id="stream__container">
+            <div class="stream__actions" id="stream__container" >
                     <div>
                     <button class="button-stream" id="camera-btn">
                     <img src="./icons/camera.png"/>
@@ -89,18 +101,7 @@
 
     </div>
 
-    <div id="conatiner-camera-id" class="conatiner-camera"  >
 
-            <div id="videos" class="camera-area camera-off-user-1">
-            <video class="video-player" id="user-1" autoplay playsinline></video>
-            </div>
-            
-           
-                    <div id="videos" class="camera-area">   
-                    <video class="video-player" id="user-2" autoplay playsinline></video>
-                    </div>
-        
-     </div>
 
        <script type="text/javascript" src="./js/agora-rtm-sdk-1.5.1.js"></script> 
        <script type="text/javascript" src="./js/room.js"></script>

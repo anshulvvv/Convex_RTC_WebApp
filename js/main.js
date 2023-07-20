@@ -34,7 +34,7 @@ const servers = {
 let init = async () => {
     client = await AgoraRTM.createInstance(APP_ID)
     await client.login({uid, token})
-
+    
     channel = client.createChannel(roomId)
     await channel.join()
 
@@ -53,7 +53,7 @@ let init = async () => {
 
 let handleUserLeft = (MemberId) => {
     document.getElementById('user-2').style.display = 'none'
-    document.getElementById('user-1').classList.remove('smallFrame')
+    
 }
 
 let handleMessageFromPeer = async (message, MemberId) => {
@@ -92,31 +92,25 @@ let createPeerConnection = async (MemberId) => {
     remoteStream = new MediaStream()
     document.getElementById('user-2').srcObject = remoteStream
     document.getElementById('user-2').style.display = 'block'
-
-    document.getElementById('user-1').classList.add('smallFrame')
-
-
+    
     if(!localStream){
-        localStream = await navigator.mediaDevices.getUserMedia({video:true, audio:false})
+        localStream = await navigator.mediaDevices.getUserMedia({video:true, audio:true})
         document.getElementById('user-1').srcObject = localStream
     }
 
     localStream.getTracks().forEach((track) => {
         peerConnection.addTrack(track, localStream)
     })
-
     peerConnection.ontrack = (event) => {
         event.streams[0].getTracks().forEach((track) => {
             remoteStream.addTrack(track)
         })
     }
-
     peerConnection.onicecandidate = async (event) => {
         if(event.candidate){
             client.sendMessageToPeer({text:JSON.stringify({'type':'candidate', 'candidate':event.candidate})}, MemberId)
         }
     }
-
   
 }
 
